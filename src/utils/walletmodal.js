@@ -21,24 +21,24 @@ export default function Walletmodel() {
         walletconnect: {
           package: WalletConnectProvider, // required
           options: {
-            infuraId: '8017fee489474239bae3738e3dbb457d' // Required
+            infuraId: '8017fee489474239bae3738e3dbb457d', // Required
             // network: 'rinkeby',
-            // qrcodeModalOptions: {
-            //   mobileLinks: [
-            //   'rainbow',
-            //   'metamask',
-            //   'argent',
-            //   'trust',
-            //   'imtoken',
-            //   'pillar'
-            //   ]
-            // }
+            qrcodeModalOptions: {
+              mobileLinks: [
+              'rainbow',
+              'metamask',
+              'argent',
+              'trust',
+              'imtoken',
+              'pillar'
+              ]
+            }
           }
-        },  
+        } 
       };
       const web3Modal = new Web3Modal({
         network: 'mainnet',
-        cacheProvider: false,
+        cacheProvider: true,
         providerOptions
       });
       const provider = await web3Modal.connect();      
