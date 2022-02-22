@@ -1,0 +1,90 @@
+@import "../base/colors.scss";
+@import "../vendors/bootstrap/bootstrap-utilities.scss";
+
+.icon {
+  color: white;
+  text-shadow: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  &:hover {
+    color: white;
+    .icon--glow {
+      color: $color--purple;
+      transition: color 0.1s ease-in;
+    }
+  }
+  transition: color 0.3s ease-out;
+  &--horizontalmargin {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  &--xs {
+    font-size: 6px;
+    &.icon--horizontalmargin {
+      margin-left: 4px;
+      margin-right: 4px;
+    }
+  }
+
+  &--sm {
+    font-size: 12px;
+    &.icon--horizontalmargin {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+  &--md {
+    font-size: 24px;
+    &.icon--horizontalmargin {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+
+  &--lg {
+    font-size: 32px;
+  }
+
+  &--xl {
+    font-size: 48px;
+  }
+
+  &--xxl {
+    font-size: 128px;
+  }
+
+  .opensea--xs {
+    width: 8px;
+    &.icon--horizontalmargin {
+      margin-left: 4px;
+      margin-right: 4px;
+    }
+  }
+
+  .opensea--lg {
+    width: 32px;
+  }
+	.opensea--md {
+    width: 24px;
+    &.icon--horizontalmargin {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+	.opensea--sm {
+    width: 16px;
+    &.icon--horizontalmargin {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+	.opensea--xl {
+    width: 50px;
+  }
+	.opensea--xxl {
+    width: 110px;
+  } 
+}

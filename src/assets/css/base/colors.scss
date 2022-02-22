@@ -1,0 +1,19 @@
+$color--purple-dark-2: #87178c;
+$color--purple-dark-1: rgb(197, 0, 197);
+$color--purple: #ff00ff;
+$color--teal-dark-2: rgb(17, 85, 95);
+$color--teal-dark-1: rgb(19, 100, 112);
+$color--teal: rgba(23, 124, 140, 1);
+
+$box-shadow-purple: 0 0 1px 1px #fff, 0 0 2px 2px $color--purple,
+  0 0 2.5px 3px $color--purple-dark-2;
+$box-shadow-teal: 0 0 1px 1px #fff, 0 0 2px 2px $color--teal,
+  0 0 2.5px 3px $color--teal-dark-1;
+
+$radial-gradient-purple: radial-gradient(
+  circle,
+  #fff 0%,
+  $color--purple 44%,
+  $color--purple-dark-2 100%
+);
+

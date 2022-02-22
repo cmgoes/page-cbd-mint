@@ -1,0 +1,13 @@
+@import "../base/colors.scss";
+
+.border {
+  border-radius: 10px;
+  &--purple {
+    box-shadow: 0 0 1px 1px #fff, 0 0 2px 2px $color--purple,
+      0 0 2.5px 3px $color--purple-dark-2;
+  }
+  &--teal {
+    box-shadow: 0 0 1px 1px #fff, 0 0 2px 2px $color--teal,
+      0 0 2.5px 3px $color--teal-dark-1;
+  }
+}

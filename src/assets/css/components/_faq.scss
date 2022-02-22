@@ -1,0 +1,55 @@
+@import "../base/colors.scss";
+
+.faq {
+  $transform-duration: 0.2s;
+  margin-bottom: 2rem;
+  &:hover {
+    cursor: pointer;
+  }
+  &__item {
+    //background-color: rgba($color: gray, $alpha: 0.3);
+    box-shadow: 0 0 1px 1px #fff, 0 0 2px 2px $color--teal,
+      0 0 2.5px 3px $color--teal-dark-1;
+    border-radius: 10px;
+    user-select: none;
+    padding: 12px;
+    transition: box-shadow $transform-duration *2;
+    .faq__question {
+      display: flex;
+      align-items: center;
+      p {
+        margin: 0;
+      }
+      i {
+        transform: rotate(0deg);
+        transition: transform $transform-duration ease;
+      }
+    }
+
+    .faq__content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.15s ease-out;
+    }
+
+    &--open {
+      box-shadow: 0 0 1px 1px #fff, 0 0 2px 2px $color--purple,
+        0 0 2.5px 3px $color--purple-dark-2;
+      .faq__question {
+        i {
+          transform: rotate(90deg);
+          transition: transform $transform-duration ease;
+        }
+      }
+      .faq__content {
+        max-height: 500vh;
+        transition: max-height $transform-duration ease-in;
+      }
+      transition: box-shadow $transform-duration * 2;
+    }
+
+    &:not(:last-child) {
+      margin: 1rem 0px;
+    }
+  }
+}

@@ -1,0 +1,119 @@
+@import "../base/colors.scss";
+@import "../vendors/bootstrap/bootstrap-utilities.scss";
+
+.rd {
+  &__card {
+    display: flex;
+    &:not(&:last-child) {
+      margin-bottom: 3em;
+    }
+    &:first-child {
+      margin-top: 48px;
+    }
+    &--reverse {
+      flex-direction: row-reverse;
+    }
+
+    .rd__blank {
+      width: calc(50% - 64px);
+      margin: auto;
+      img {
+        width: 100%;
+        &.img--rotate {
+          animation: rotate 12s infinite linear;
+        }
+      }
+    }
+
+    .rd__icon {
+      width: 128px;
+      position: relative;
+      img {
+        width: 96px;
+        position: absolute;
+        top: -42px;
+        left: calc(50% - 48px);
+      }
+      .rd__line {
+        background-color: #fff;
+        box-shadow: 0 0 1px 1px #fff, 0 0 2px 2px #ff00ff, 0 0 2.5px 3px #87178c;
+        border-radius: 5px;
+        left: calc(50% - 1px);
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        bottom: 0;
+      }
+    }
+    .rd__content {
+      width: calc(50% - 64px);
+      box-shadow: 0 0 1px 1px #fff, 0 0 2px 2px $color--teal,
+        0 0 2.5px 3px $color--teal-dark-1;
+      border-radius: 5px;
+
+      .rd__listtitle {
+        text-shadow: 0 0 1px white, 0 0 2px $color--purple,
+          0 0 2px $color--purple-dark-1, 0 0 2px $color--purple-dark-1,
+          0 0 4px $color--purple-dark-2, 0 0 4px $color--purple-dark-2,
+          0 0 4px $color--purple-dark-2;
+      }
+
+      .rd__items {
+        margin-bottom: 20px;
+      }
+
+      .rd__item {
+        p {
+          margin: 0;
+        }
+
+        i {
+          transform: rotate(0deg);
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        .rd__icontent {
+          visibility: hidden;
+          height: 0px;
+        }
+
+        &--open {
+          i {
+            transform: rotate(90deg);
+          }
+
+          .rd__icontent {
+            height: inherit;
+            max-height: 100vh;
+            visibility: visible;
+          }
+        }
+      }
+    }
+
+    @include media-breakpoint-down(lg) {
+      .rd__blank {
+        display: none;
+      }
+
+      .rd__icon {
+        display: none;
+      }
+      .rd__content {
+        width: 100%;
+        margin: 0;
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,8 @@
+@import "../base/colors.scss";
+
+.description {
+  &__important {
+    background-color: $color--purple-dark-1;
+    border-radius: 10px;
+  }
+}

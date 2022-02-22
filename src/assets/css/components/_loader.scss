@@ -1,0 +1,60 @@
+@import "../base/colors.scss";
+
+.loader {
+  z-index: 20;
+  position: absolute;
+  top: -100vh;
+  height: 100vh;
+  background: black;
+  left: 0;
+  right: 0;
+  transition: transform 2s cubic-bezier(1, 0, 0, 1);
+  &__container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  img {
+    animation: glow 2s infinite alternate-reverse;
+  }
+
+  &__dots {
+    &::after {
+      content: ".";
+      display: inline-block;
+      width: 1px;
+      animation: loading 1s infinite forwards;
+    }
+  }
+  &--active {
+    transform: translateY(100vh);
+    width: 100%;
+  }
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(
+      0 0 0rem rgba($color: $color--purple-dark-1, $alpha: 1)
+    );
+  }
+
+  100% {
+    filter: drop-shadow(0 0 0.95rem rgba($color: $color--purple, $alpha: 1));
+  }
+}
+
+@keyframes loading {
+  0% {
+    content: ".";
+  }
+  50% {
+    content: "..";
+  }
+  100% {
+    content: "...";
+  }
+}

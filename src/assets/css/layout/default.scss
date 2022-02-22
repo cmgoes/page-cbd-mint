@@ -1,0 +1,131 @@
+@import "../vendors/bootstrap/bootstrap-utilities.scss";
+@import "../base/colors.scss";
+body {
+  background-color: rgba($color: black, $alpha: 1);
+  color: white;
+  margin: 0;
+  padding: 0;
+  z-index: 0;
+}
+
+[id]::before {
+  content: "";
+  display: block;
+  height: 60px;
+  margin-top: -60px;
+  visibility: hidden;
+}
+
+header {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  border-radius: 12px;
+}
+
+.nav {
+  opacity: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 3;
+  &--visible {
+    background-color: rgba($color: black, $alpha: 0.9);
+  }
+  transition: background-color 0.4s ease;
+
+  &__title {
+    @include media-breakpoint-down(sm) {
+      font-size: 2.2em;
+    }
+  }
+
+  &__logo {
+    border-radius: 0px;
+    width: 64px;
+  }
+
+  &__container {
+    background-color: rgba($color: black, $alpha: 0.9);
+    position: fixed;
+    z-index: 13;
+    bottom: 0;
+    bottom: 0;
+    height: 100%;
+
+    right: -20vw;
+    width: 20vw;
+
+    @include media-breakpoint-between(sm, xxl) {
+      right: -40vw;
+      width: 40vw;
+    }
+
+    @include media-breakpoint-down(sm) {
+      right: -50vw;
+      width: 50vw;
+    }
+
+    &--opened {
+      right: 0;
+    }
+    transition: right 0.2s;
+
+    .nav {
+      * li {
+        list-style: none;
+      }
+
+      &__item {
+        &:first-child {
+          margin-top: 100px;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+      }
+
+      &__icons {
+        margin-top: 4rem;
+      }
+
+      &__link {
+        text-decoration: none;
+        text-transform: uppercase;
+        user-select: none;
+        color: white;
+        padding: 6px;
+        border-radius: 10px;
+        box-shadow: none;
+        &:hover {
+          cursor: pointer;
+          filter: drop-shadow(0 0 0.1px $color--purple-dark-2);
+          box-shadow: $box-shadow-purple;
+          transition: box-shadow 0.1s ease-in;
+        }
+
+        transition: box-shadow 0.3s ease-out;
+      }
+    }
+  }
+}
+
+.footer {
+  .hzl {
+    margin-bottom: 20px;
+    height: 2px;
+    background-color: #fff;
+    box-shadow: 0 0 1px 1px #fff, 0 0 2px 2px #ff00ff, 0 0 2.5px 3px #87178c;
+    border-radius: 5px;
+    margin: 2em 0 2em 0;
+  }
+
+  &__icon {
+    border-radius: 0;
+    width: 64px;
+  }
+}
