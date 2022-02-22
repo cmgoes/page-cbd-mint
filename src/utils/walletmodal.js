@@ -12,12 +12,12 @@ export default function Walletmodel() {
     async getweb3() {
       setLoading(true);      
       const providerOptions = {
-        metamask: {
-          id: 'injected',
-          name: 'MetaMask',
-          type: 'injected',
-          check: 'isMetaMask'
-        },
+        // metamask: {
+        //   id: 'injected',
+        //   name: 'MetaMask',
+        //   type: 'injected',
+        //   check: 'isMetaMask'
+        // },
         walletconnect: {
           package: WalletConnectProvider, // required
           options: {
