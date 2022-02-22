@@ -21,7 +21,7 @@ export default function Walletmodel() {
         walletconnect: {
           package: WalletConnectProvider, // required
           options: {
-            infuraId: '8017fee489474239bae3738e3dbb457d', // Required
+            infuraId: '8017fee489474239bae3738e3dbb457d' // Required
             // network: 'rinkeby',
             // qrcodeModalOptions: {
             //   mobileLinks: [
@@ -41,16 +41,7 @@ export default function Walletmodel() {
         cacheProvider: false,
         providerOptions
       });
-      const provider = await web3Modal.connect();
-      provider.on('error', e => console.error('WS Error', e));
-      provider.on('end', e => console.error('WS End', e));
-      
-      provider.on('disconnect', (error) => {
-        console.log(error);
-      });
-      provider.on('connect', (info) => {
-        console.log(info);
-      });
+      const provider = await web3Modal.connect();      
       const web3 = new Web3(provider);
       setLoading(false);
       return web3;
