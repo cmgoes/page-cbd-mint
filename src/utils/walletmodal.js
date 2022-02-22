@@ -10,12 +10,8 @@ export default function Walletmodel() {
       return loading
     },
     async getweb3() {
-      setLoading(true);
-      let web3Modal;
-      let provider;
-      let web3;
-      let providerOptions;
-      providerOptions = {
+      setLoading(true);      
+      const providerOptions = {
         metamask: {
           id: 'injected',
           name: 'MetaMask',
@@ -26,26 +22,26 @@ export default function Walletmodel() {
           package: WalletConnectProvider, // required
           options: {
             infuraId: '8017fee489474239bae3738e3dbb457d', // Required
-            network: 'rinkeby',
-            qrcodeModalOptions: {
-              mobileLinks: [
-              'rainbow',
-              'metamask',
-              'argent',
-              'trust',
-              'imtoken',
-              'pillar'
-              ]
-            }
+            // network: 'rinkeby',
+            // qrcodeModalOptions: {
+            //   mobileLinks: [
+            //   'rainbow',
+            //   'metamask',
+            //   'argent',
+            //   'trust',
+            //   'imtoken',
+            //   'pillar'
+            //   ]
+            // }
           }
         },  
       };
-      web3Modal = new Web3Modal({
+      const web3Modal = new Web3Modal({
         network: 'rinkeby',
-        cacheProvider: true,
+        cacheProvider: false,
         providerOptions
       });
-      provider = await web3Modal.connect();
+      const provider = await web3Modal.connect();
       provider.on('error', e => console.error('WS Error', e));
       provider.on('end', e => console.error('WS End', e));
       
@@ -55,7 +51,7 @@ export default function Walletmodel() {
       provider.on('connect', (info) => {
         console.log(info);
       });
-      web3 = new Web3(provider);
+      const web3 = new Web3(provider);
       setLoading(false);
       return web3;
     }
