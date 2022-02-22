@@ -25,7 +25,7 @@ export default function Walletmodel() {
         walletconnect: {
           package: WalletConnectProvider, // required
           options: {
-            infuraId: 'INFURA_ID', // Required
+            infuraId: '8017fee489474239bae3738e3dbb457d', // Required
             network: 'rinkeby',
             qrcodeModalOptions: {
               mobileLinks: [
