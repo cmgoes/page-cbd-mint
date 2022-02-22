@@ -37,11 +37,30 @@ export default function Walletmodel() {
         } 
       };
       const web3Modal = new Web3Modal({
-        network: 'mainnet',
+        network: 'rinkeby',
         cacheProvider: true,
         providerOptions
       });
       const provider = await web3Modal.connect();      
+      // Subscribe to accounts change
+      provider.on("accountsChanged", (accounts) => {
+        console.log(accounts);
+      });
+
+      // Subscribe to chainId change
+      provider.on("chainChanged", (chainId) => {
+        console.log(chainId);
+      });
+
+      // Subscribe to provider connection
+      provider.on("connect", (info) => {
+        console.log(info);
+      });
+
+      // Subscribe to provider disconnection
+      provider.on("disconnect", (error) => {
+        console.log(error);
+      });
       const web3 = new Web3(provider);
       setLoading(false);
       return web3;
