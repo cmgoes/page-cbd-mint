@@ -15,7 +15,8 @@ const contractAddress = "0xf78d6e4241303DC4b743A3Ea0ae496c78176a0Eb";
 export default function Mint() {
   const [walletAddress, setWallet] = useState("");  
   const [tokenNum, setTokenNum] = useState(1);
-  const [supply, setSupply] = useState(0);
+  // const [supply, setSupply] = useState(0);
+  const supply = 0;
 
   const {web3Loading, getweb3} = Walletmodel ();
   const [web3, setMyWeb3] = useState ();
@@ -154,7 +155,7 @@ export default function Mint() {
   //   subscribeToEvents();
   // };
 
-  const presaleState = true;
+  const presaleState = false;
 
   const presalePrice = 8;
   const publicsalePrice = 12;
@@ -166,10 +167,10 @@ export default function Mint() {
     setTokenNum(tokenNum - 1);
   }
 
-  const handleConnect = async () => {
-    const walletResponse = await connectWallet();    
-    setWallet(walletResponse.address);
-  };
+  // const handleConnect = async () => {
+  //   const walletResponse = await connectWallet();    
+  //   setWallet(walletResponse.address);
+  // };
 
   // function addWalletListener() {
   //   if (window.ethereum) {
@@ -216,10 +217,10 @@ export default function Mint() {
       // const {address} = await getCurrentWalletConnected();   
       // setWallet(address);   
       if(web3Loading) {   
-        var contract = new web3.eth.Contract(contractABI, contractAddress);
-        contract.methods.totalSupply().call().then((_supply) => {        
-          setSupply(_supply);        
-        }).catch((err) => console.log(err))
+        // var contract = new web3.eth.Contract(contractABI, contractAddress);
+        // contract.methods.totalSupply().call().then((_supply) => {        
+        //   setSupply(_supply);        
+        // }).catch((err) => console.log(err))
       }
       // addWalletListener();     
       // console.log(supply);  
@@ -233,7 +234,7 @@ export default function Mint() {
       style={{backgroundImage: "url('./images/png/bg.jpg')"}}
     >
       <div className="d-flex justify-content-end mint-container">
-        <button className="connect" type="button" onClick={handleConnect}>
+        <button className="connect" type="button" onClick={connectWallet}>
         {/* <button className="connect" type="button" onClick={walletConnect}> */}
           {walletAddress.length > 0 ? (                    
             "" +
