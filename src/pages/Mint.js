@@ -3,7 +3,7 @@ import Walletmodel from "../utils/walletmodal.js";
 
 const alchemyKey = process.env.REACT_APP_ALCHEMY_KEY;
 const contractABI = require("../cbd.json");
-const contractAddress = "0xf78d6e4241303DC4b743A3Ea0ae496c78176a0Eb";
+const contractAddress = "0x24F712a889258e6f3e7d001dd7a885B266759dEb";
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 
 export default function Mint() {
@@ -33,10 +33,10 @@ export default function Mint() {
     else {         
       const contract = new web3.eth.Contract(contractABI, contractAddress);
       const _amountOfEther = web3.utils.toWei(web3.utils.toBN(price), 'ether') * web3.utils.toBN(amount) / web3.utils.toBN(100); 
-      const gaslimit = 80000 + amount * 10000;
+      const gaslimit = 140000 + amount * 10000;
       if (state === true) {
-        // contract.methods.mintPresale(amount).send({from: walletAddress, gas: gaslimit, value: _amountOfEther})
-        contract.methods.mint(amount).send({from: walletAddress, gas: gaslimit, value: _amountOfEther})
+        contract.methods.mintPresale(amount).send({from: walletAddress, gas: gaslimit, value: _amountOfEther})
+        // contract.methods.mint(amount).send({from: walletAddress, gas: gaslimit, value: _amountOfEther})
         .on("confirmation", function () {      
         })
         .on('error', async function (error, receipt) {
@@ -58,11 +58,11 @@ export default function Mint() {
   } 
 
   // const [publicsaledate, setPublicsaledate] = useState(new Date("23 February 2022 03:56:00 UTC").getTime());
-  const publicsaledate = new Date("23 February 2022 03:57:00 UTC").getTime();
+  const publicsaledate = new Date("23 February 2022 04:57:00 UTC").getTime();
   const [timerInterval, setTimerInterval] = useState(null);
   const [presaleState, setPresaleState] = useState(false);
 
-  const presalePrice = 12;
+  const presalePrice = 8;
   const publicsalePrice = 12;
 
   const decreaseTokenNumber = () => {
@@ -149,7 +149,7 @@ export default function Mint() {
           presaleState ? <h4 className="mb-1">Total {presalePrice * tokenNum / 100} ETH</h4> : 
           <h4 className="mb-1">Total {publicsalePrice * tokenNum / 100} ETH</h4>
         }  
-        {presaleState ? <button type="button" onClick={() => {mintNFT(tokenNum, publicsalePrice, presaleState)}}>Mint</button> : 
+        {presaleState ? <button type="button" onClick={() => {mintNFT(tokenNum, presalePrice, presaleState)}}>Mint</button> : 
           <button type="button" disabled onClick={() => {mintNFT(tokenNum, presalePrice, presaleState)}}>Mint</button>
         }         
       </div>
