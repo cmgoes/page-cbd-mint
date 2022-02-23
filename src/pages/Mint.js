@@ -123,7 +123,7 @@ export default function Mint() {
         </button>
       </div>
       <div className="mint-assets-content mb-4">
-        <img src="/images/png/spec.png" width={240} height={240} alt="" />
+        <img src="/images/png/logo.png" width={600} alt="" />
       </div>
       <div className="mint-desc-container">
         <div className="nft-panel">
