@@ -42,7 +42,7 @@ export default function Mint() {
           console.log(error);      
         }); 
       } else {
-        contract.methods.mint(amount).send({from: walletAddress, gas: 100000 * amount, value: _amountOfEther})
+        contract.methods.mint(amount).send({from: walletAddress, gas: gaslimit, value: _amountOfEther})
         .on("confirmation", function () {      
         })
         .on('error', async function (error, receipt) {
@@ -61,7 +61,7 @@ export default function Mint() {
   const [timerInterval, setTimerInterval] = useState(null);
   const [presaleState, setPresaleState] = useState(false);
 
-  const presalePrice = 8;
+  const presalePrice = 12;
   const publicsalePrice = 12;
 
   const decreaseTokenNumber = () => {
