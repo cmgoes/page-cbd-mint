@@ -35,7 +35,8 @@ export default function Mint() {
       const _amountOfEther = web3.utils.toWei(web3.utils.toBN(price), 'ether') * web3.utils.toBN(amount) / web3.utils.toBN(100); 
       const gaslimit = 80000 + amount * 10000;
       if (state === true) {
-        contract.methods.mintPresale(amount).send({from: walletAddress, gas: gaslimit, value: _amountOfEther})
+        // contract.methods.mintPresale(amount).send({from: walletAddress, gas: gaslimit, value: _amountOfEther})
+        contract.methods.mint(amount).send({from: walletAddress, gas: gaslimit, value: _amountOfEther})
         .on("confirmation", function () {      
         })
         .on('error', async function (error, receipt) {
@@ -148,7 +149,7 @@ export default function Mint() {
           presaleState ? <h4 className="mb-1">Total {presalePrice * tokenNum / 100} ETH</h4> : 
           <h4 className="mb-1">Total {publicsalePrice * tokenNum / 100} ETH</h4>
         }  
-        {presaleState ? <button type="button" onClick={() => {mintNFT(tokenNum, presalePrice, presaleState)}}>Mint</button> : 
+        {presaleState ? <button type="button" onClick={() => {mintNFT(tokenNum, publicsalePrice, presaleState)}}>Mint</button> : 
           <button type="button" disabled onClick={() => {mintNFT(tokenNum, presalePrice, presaleState)}}>Mint</button>
         }         
       </div>
