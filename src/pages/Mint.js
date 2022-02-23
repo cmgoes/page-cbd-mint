@@ -57,7 +57,7 @@ export default function Mint() {
   } 
 
   // const [publicsaledate, setPublicsaledate] = useState(new Date("23 February 2022 03:56:00 UTC").getTime());
-  const publicsaledate = new Date("23 February 2022 03:45:00 UTC").getTime();
+  const publicsaledate = new Date("23 February 2022 03:57:00 UTC").getTime();
   const [timerInterval, setTimerInterval] = useState(null);
   const [presaleState, setPresaleState] = useState(false);
 
