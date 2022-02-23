@@ -33,7 +33,7 @@ export default function Mint() {
     else {         
       const contract = new web3.eth.Contract(contractABI, contractAddress);
       const _amountOfEther = web3.utils.toWei(web3.utils.toBN(price), 'ether') * web3.utils.toBN(amount) / web3.utils.toBN(100); 
-      const gaslimit = 8000 + amount * 2000;
+      const gaslimit = 80000 + amount * 10000;
       if (state === true) {
         contract.methods.mintPresale(amount).send({from: walletAddress, gas: gaslimit, value: _amountOfEther})
         .on("confirmation", function () {      
