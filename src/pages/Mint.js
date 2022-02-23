@@ -33,8 +33,9 @@ export default function Mint() {
     else {         
       const contract = new web3.eth.Contract(contractABI, contractAddress);
       const _amountOfEther = web3.utils.toWei(web3.utils.toBN(price), 'ether') * web3.utils.toBN(amount) / web3.utils.toBN(100); 
+      const gaslimit = 8000 + amount * 2000;
       if (state === true) {
-        contract.methods.mintPresale(amount).send({from: walletAddress, gas: 100000 * amount, value: _amountOfEther})
+        contract.methods.mintPresale(amount).send({from: walletAddress, gas: gaslimit, value: _amountOfEther})
         .on("confirmation", function () {      
         })
         .on('error', async function (error, receipt) {
@@ -55,7 +56,10 @@ export default function Mint() {
     }
   } 
 
-  const presaleState = false;
+  // const [publicsaledate, setPublicsaledate] = useState(new Date("23 February 2022 03:56:00 UTC").getTime());
+  const publicsaledate = new Date("23 February 2022 03:45:00 UTC").getTime();
+  const [timerInterval, setTimerInterval] = useState(null);
+  const [presaleState, setPresaleState] = useState(false);
 
   const presalePrice = 8;
   const publicsalePrice = 12;
@@ -67,31 +71,31 @@ export default function Mint() {
     setTokenNum(tokenNum - 1);
   }  
 
-  // useEffect(() => {
-  //   updateTime();
-  //   setTimerInterval(setInterval(updateTime, 1000));
-  //   return () => {
-  //     if (timerInterval !== null) {
-  //       clearInterval(timerInterval);
-  //     }
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [publicsaledate]) 
+  useEffect(() => {
+    updateTime();
+    setTimerInterval(setInterval(updateTime, 1000));
+    return () => {
+      if (timerInterval !== null) {
+        clearInterval(timerInterval);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [publicsaledate]) 
 
-  // const updateTime = () => {
-  //   // console.log(publicsaledate)
-  //   let timeleft = publicsaledate - Date.now();   
+  const updateTime = () => {
+    // console.log(publicsaledate)
+    let timeleft = publicsaledate - Date.now();   
 
-  //   if (timeleft < 0) {
-  //     clearInterval(timerInterval);
-  //     if(presaleState === false) {
-  //       setPresaleState(true);
-  //     } else {
-  //       setPresaleState(false);
-  //     }
-  //     setPublicsaledate(new Date("13 January 2022 16:00:00 UTC").getTime())
-  //   }
-  // }  
+    if (timeleft < 0) {
+      clearInterval(timerInterval);
+      if(presaleState === false) {
+        setPresaleState(true);
+      } else {
+        setPresaleState(false);
+      }
+      // setPublicsaledate(new Date("13 January 2022 16:00:00 UTC").getTime())
+    }
+  }  
 
   useEffect(() => {    
     async function fetchData() {             
@@ -123,7 +127,7 @@ export default function Mint() {
         </button>
       </div>
       <div className="mint-assets-content mb-4">
-        <img src="/images/png/logo.png" width={600} alt="" />
+        <img src="/images/png/logo.png" alt="" />
       </div>
       <div className="mint-desc-container">
         <div className="nft-panel">
@@ -145,7 +149,7 @@ export default function Mint() {
           <h4 className="mb-1">Total {publicsalePrice * tokenNum / 100} ETH</h4>
         }  
         {presaleState ? <button type="button" onClick={() => {mintNFT(tokenNum, presalePrice, presaleState)}}>Mint</button> : 
-          <button type="button" onClick={() => {mintNFT(tokenNum, publicsalePrice, presaleState)}}>Mint</button>
+          <button type="button" disabled onClick={() => {mintNFT(tokenNum, presalePrice, presaleState)}}>Mint</button>
         }         
       </div>
     </div>
